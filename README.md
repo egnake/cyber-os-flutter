@@ -14,16 +14,6 @@ Built with **Flutter**, powered by **Riverpod** & **Hive**.
 
 ---
 
-## 📸 Screenshots
-
-| Dashboard (Scanner) | Arsenal (Toolkit) | Red Team Tools |
-|:---:|:---:|:---:|
-| <img src="assets/screen1.png" width="250" alt="Scanner UI" /> | <img src="assets/screen2.png" width="250" alt="Arsenal UI" /> | <img src="assets/screen3.png" width="250" alt="Tools UI" /> |
-
-*(Please upload your screenshots to an `assets` folder to display them here)*
-
----
-
 ## 🔥 Key Features ( The Arsenal )
 
 ### 🕵️‍♂️ 1. Reconnaissance (Intelligence)
