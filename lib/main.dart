@@ -10,7 +10,6 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(IpDataAdapter());
   
-  // Kutuyu burada açmayı deniyoruz ama açılmazsa servis tarafında da kontrol koyduk
   await Hive.openBox<IpData>('history');
 
   runApp(const ProviderScope(child: MyApp()));
