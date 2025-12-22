@@ -24,13 +24,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   final TextEditingController _controller = TextEditingController();
   String _searchIp = "";
 
-  // Cyber OS Palette V6 (Final Gold)
-  final Color _bg = const Color(0xFF000000); // Pure Black
+
+  final Color _bg = const Color(0xFF000000);
   final Color _surface = const Color(0xFF111111);
-  final Color _accent = const Color(0xFF00F0FF); // Cyber Cyan
-  final Color _danger = const Color(0xFFFF003C); // Cyber Red
-  final Color _success = const Color(0xFF00FF41); // Matrix Green
-  final Color _warn = const Color(0xFFFFD700); // Cyber Gold (EKLENDİ)
+  final Color _accent = const Color(0xFF00F0FF);
+  final Color _danger = const Color(0xFFFF003C); 
+  final Color _success = const Color(0xFF00FF41); 
+  final Color _warn = const Color(0xFFFFD700); 
   final Color _textSec = const Color(0xFF888888);
 
   @override
@@ -72,7 +72,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     }
   }
 
-  // --- 1. DASHBOARD ---
+  // DASHBOARD
   Widget _buildDashboardBody() {
     final ipDataAsync = ref.watch(ipDataProvider(_searchIp));
     return Column(children: [
@@ -94,7 +94,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     ]);
   }
 
-  // --- 2. ARSENAL (REMASTERED UI) ---
+  // UI
   Widget _buildArsenalView() {
     return ListView(
       padding: const EdgeInsets.all(20),
@@ -169,9 +169,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  // --- TOOL MODALS (GÜNCELLENENLER) ---
 
-  // My IP (Kopyalanabilir ve Düzgün UI)
+  // My IP
   void _showMyIpTool() {
      _showModal("MY PUBLIC IP", FutureBuilder<String>(
        future: ApiService().getMyIp(),
@@ -202,7 +201,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
      ));
   }
 
-  // Ping Tool (TCP ile daha kararlı)
+  // Ping Tool TCP
   void _showPingTool() {
     final c = TextEditingController(); String r = "";
     _showModal("LATENCY TESTER", StatefulBuilder(builder: (ctx, setS) => Column(children: [
@@ -256,7 +255,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   void _showUnixTool() { final c = TextEditingController(); String r = ""; _showModal("UNIX TIME", StatefulBuilder(builder: (ctx, setS) => Column(children: [ _input(c, "Timestamp (örn: 1672531200)"), _btn("ÇEVİR", () { try { int ts = int.parse(c.text); var date = DateTime.fromMillisecondsSinceEpoch(ts * 1000); setS(() => r = DateFormat('dd.MM.yyyy HH:mm:ss').format(date)); } catch(e) { setS(() => r = "Geçersiz Timestamp"); } }), _output(r) ]))); }
   void _showRot13Tool() { final c = TextEditingController(); String r = ""; _showModal("ROT13 CIPHER", StatefulBuilder(builder: (ctx, setS) => Column(children: [ _input(c, "Metin..."), _btn("UYGULA", () { var input = c.text; var output = ""; for (int i = 0; i < input.length; i++) { int charCode = input.codeUnitAt(i); if ((charCode >= 65 && charCode <= 90)) { output += String.fromCharCode(((charCode - 65 + 13) % 26) + 65); } else if ((charCode >= 97 && charCode <= 122)) { output += String.fromCharCode(((charCode - 97 + 13) % 26) + 97); } else { output += input[i]; } } setS(() => r = output); }), _output(r) ]))); }
 
-  // --- UI YARDIMCILARI ---
+  //UI YARDIMCILARI
   void _showModal(String title, Widget content) { showModalBottomSheet(context: context, isScrollControlled: true, backgroundColor: _bg, builder: (ctx) => Container(height: MediaQuery.of(context).size.height * 0.75, padding: const EdgeInsets.all(20), decoration: BoxDecoration(color: _bg, border: Border(top: BorderSide(color: _accent.withOpacity(0.3), width: 1)), borderRadius: const BorderRadius.vertical(top: Radius.circular(20))), child: Column(children: [Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey[800], borderRadius: BorderRadius.circular(2))), const SizedBox(height: 20), Text(title, style: GoogleFonts.audiowide(color: _accent, fontSize: 20)), const SizedBox(height: 20), Expanded(child: content)]))); }
   Widget _input(TextEditingController c, String h) => TextField(controller: c, style:const TextStyle(color:Colors.white), decoration:InputDecoration(hintText:h, hintStyle:TextStyle(color:Colors.grey), filled:true, fillColor:const Color(0xFF222222), border:OutlineInputBorder(borderRadius:BorderRadius.circular(8), borderSide: BorderSide.none)));
   Widget _btn(String t, VoidCallback p, {Color? color}) => Padding(padding:const EdgeInsets.symmetric(vertical:10), child:ElevatedButton(style:ElevatedButton.styleFrom(backgroundColor: color ?? _accent, minimumSize:const Size(double.infinity,45)), onPressed:p, child:Text(t, style:const TextStyle(color:Colors.black, fontWeight:FontWeight.bold))));
