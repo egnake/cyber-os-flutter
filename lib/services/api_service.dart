@@ -6,7 +6,7 @@ import '../models/ip_data.dart';
 class ApiService {
   final Dio _dio = Dio();
 
-  // --- 1. ANA ANALİZ (IP/DOMAIN) ---
+  // analiz
   Future<IpData?> fetchIpInfo(String input) async {
     try {
       String targetIp = input;
@@ -60,7 +60,7 @@ class ApiService {
     }
   }
 
-  // --- ARSENAL ARAÇLARI ---
+  // ui
 
   Future<String> fetchWhois(String domain) async {
     try {
@@ -116,10 +116,10 @@ class ApiService {
     } catch (e) { return "Bağlantı Hatası"; }
   }
 
-  // YENİLENEN PING (TCP SOCKET)
+  // tcpsocket
   Future<String> pingHost(String target) async {
     try {
-      // http:// temizle
+     
       String host = target.replaceAll("https://", "").replaceAll("http://", "").split("/")[0];
       
       final stopwatch = Stopwatch()..start();
