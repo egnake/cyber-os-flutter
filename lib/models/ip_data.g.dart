@@ -1,11 +1,6 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-
 part of 'ip_data.dart';
 
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
+//adapter gen
 class IpDataAdapter extends TypeAdapter<IpData> {
   @override
   final int typeId = 0;
